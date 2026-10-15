@@ -1,0 +1,421 @@
+body {
+  --academy-tilt-x: 0deg;
+  --academy-tilt-y: 0deg;
+  perspective: 1400px;
+  perspective-origin: 50% 28%;
+}
+
+:where(.app, .wrap, .container, #app, body > main) {
+  transform: perspective(1600px) rotateX(var(--academy-tilt-y)) rotateY(var(--academy-tilt-x));
+  transform-style: preserve-3d;
+  transition: transform 450ms cubic-bezier(.16, 1, .3, 1);
+}
+
+:where(header, main, section, .board, .panel, .glass-panel, .glass-card) {
+  transform-style: preserve-3d;
+}
+
+:where(header, .app > main, .container, .board, .glass-panel, .glass-card) {
+  box-shadow:
+    0 2px 0 rgb(19 37 82 / 12%),
+    0 8px 0 rgb(19 37 82 / 8%),
+    0 18px 34px rgb(15 32 76 / 13%);
+}
+
+:where(
+  button,
+  [role="button"],
+  .option,
+  .answer,
+  [class*="option"],
+  [class*="answer"],
+  [class*="word"],
+  [class*="category"],
+  [class*="drop"],
+  #options-container > *,
+  [draggable="true"],
+  select,
+  input
+) {
+  transition:
+    transform 200ms cubic-bezier(.16, 1, .3, 1),
+    box-shadow 200ms cubic-bezier(.16, 1, .3, 1),
+    filter 180ms ease;
+  transform: translateZ(0);
+}
+
+:where(
+  button,
+  [role="button"],
+  .option,
+  .answer,
+  [class*="option"],
+  [class*="answer"],
+  [class*="word"],
+  [class*="category"],
+  [class*="drop"],
+  #options-container > *,
+  [draggable="true"]
+):active {
+  transform: perspective(550px) translateY(2px) translateZ(7px) scale(.985);
+  filter: brightness(.96);
+}
+
+:where(
+  button,
+  [role="button"],
+  .option,
+  .answer,
+  [class*="option"],
+  [class*="answer"],
+  [class*="word"],
+  [class*="category"],
+  [class*="drop"],
+  #options-container > *,
+  [draggable="true"]
+):focus-visible {
+  outline: 3px solid #ff806c;
+  outline-offset: 3px;
+  transform: perspective(650px) translateZ(9px);
+  box-shadow: 0 9px 18px rgb(24 42 94 / 17%);
+}
+
+:where(
+  button,
+  [role="button"],
+  .option,
+  .answer,
+  [class*="option"],
+  [class*="answer"],
+  [class*="word"],
+  [class*="category"],
+  [class*="drop"],
+  #options-container > *,
+  [draggable="true"]
+) img,
+:where(.board, .panel, .card, .glass-card, .glass-panel) > :where(img, svg) {
+  transform: translateZ(7px);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :where(
+    button,
+    [role="button"],
+    .option,
+    .answer,
+    [class*="option"],
+    [class*="answer"],
+    [class*="word"],
+    [class*="category"],
+    [class*="drop"],
+    #options-container > *,
+    [draggable="true"]
+  ):hover {
+    transform: perspective(650px) translateY(-3px) translateZ(13px) rotateX(-1deg);
+    filter: saturate(1.06);
+  }
+
+  :where(.app, .wrap, .container, #app, body > main):hover {
+    --academy-tilt-x: 1deg;
+    --academy-tilt-y: -.65deg;
+  }
+
+  :where(.board, .panel, .glass-card, .glass-panel) {
+    transition: transform 320ms cubic-bezier(.16, 1, .3, 1), box-shadow 320ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.app, .wrap, .container, #app, body > main, header, main, section, .board, .panel, .glass-panel, .glass-card),
+  :where(
+    button,
+    [role="button"],
+    .option,
+    .answer,
+    [class*="option"],
+    [class*="answer"],
+    [class*="word"],
+    [class*="category"],
+    [class*="drop"],
+    #options-container > *,
+    [draggable="true"],
+    select,
+    input
+  ) {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+html {
+  color-scheme: dark;
+  background: #070d17 !important;
+}
+
+body {
+  color: #e9eff6 !important;
+  background:
+    radial-gradient(ellipse at 50% -8%, #19304b 0, #0c192a 40%, #070d17 82%) !important;
+  font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+}
+
+:where(.app, .wrap, .container, #app, body > main, .game-container, .game-wrap) {
+  position: relative;
+  z-index: 1;
+  color: #e9eff6;
+}
+
+:where(header, .app > main, .container, .board, .panel, .card, .success, .glass-panel, .glass-card) {
+  border: 1px solid #52678066;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #14243a, #0e1a2a) !important;
+  box-shadow: 0 3px 0 #050a12, 0 10px 24px #0006;
+  color: #e9eff6 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:where(h1, h2, h3, p, label, .subtitle, .small, .sub, .feedback, #message, #msg) {
+  color: #e9eff6;
+}
+
+:where(.subtitle, .small, .sub, .game-description, .hint, .helper-text) {
+  color: #b3c2d2 !important;
+}
+
+:where(.badge, .stat, .stats, .teacher-badge) {
+  border: 1px solid #354a63;
+  background: #192a3e !important;
+  color: #e8eef5 !important;
+}
+
+:where(
+  .word, .option, .answer, .option-btn, .placed,
+  [class*="option"], [class*="answer"], [class*="word"],
+  [class*="category"], [class*="drop-zone"], [draggable="true"]
+) {
+  border-color: #465a71 !important;
+  background-color: #17273a !important;
+  color: #f0f4f8 !important;
+  box-shadow: 0 3px 0 #09111d, 0 8px 15px #0004;
+}
+
+:where(.word.selected, .option.selected, .selected-word, .drop-zone-active, .category.over, .cat.active) {
+  border-color: #e7c77f !important;
+  background-color: #27364a !important;
+  color: #fff4d5 !important;
+}
+
+:where(.word.done, .word.used, .used) {
+  color: #adbac8 !important;
+}
+
+:where(.cat, .category, .slot, .progress, .question-box, .question, .question-card, .question-container, .game-panel) {
+  border-color: #3b5068;
+  background-color: #122237 !important;
+  color: #e9eff6 !important;
+}
+
+:where(.question-box, .question, .question-card, .question-container) {
+  border-inline-start: 3px solid #6dc7da;
+}
+
+:where(.correct, .right, .success-answer) {
+  border-color: #73c69a !important;
+  background-color: #173b33 !important;
+  color: #c3f1d3 !important;
+}
+
+:where(.wrong, .incorrect, .error-answer) {
+  border-color: #df7f85 !important;
+  background-color: #40252e !important;
+  color: #ffd3d3 !important;
+}
+
+:where(button, [role="button"], input, select, textarea) {
+  font-family: inherit;
+}
+
+:where(button, [role="button"], [draggable="true"]) {
+  box-shadow: 0 4px 0 #070d17, 0 8px 15px #0004;
+}
+
+:where(button, [role="button"]):focus-visible,
+:where(input, select, textarea):focus-visible {
+  outline: 3px solid #edc77b !important;
+  outline-offset: 3px;
+}
+
+:where(#check, #next, .next-btn, .check, .btn-primary, .primary-button) {
+  border: 1px solid #edc77b !important;
+  background: linear-gradient(180deg, #edcf8e, #c49b55) !important;
+  color: #17130d !important;
+  box-shadow: 0 4px 0 #75592d, 0 9px 17px #0005 !important;
+}
+
+:where(#reset, .reset, .btn-secondary, .secondary-button) {
+  border: 1px solid #50657b !important;
+  background: #203149 !important;
+  color: #eef3f8 !important;
+}
+
+:where(.progress, .progress-bar, progress) {
+  background-color: #203149 !important;
+}
+
+:where(.progress span, .progress i, .progress-bar > *, progress::-webkit-progress-value) {
+  background-color: #d9b66e !important;
+}
+
+:where(.overlay) { background: #030811dc !important; }
+:where(.success, .card, .glass-card) { border-color: #b38c4d70; }
+:where(.glass-card) {
+  background: linear-gradient(145deg, #1a2b40, #101d2d) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+:where(.glass-card .text-gray-900, .glass-card .text-gray-800, .glass-card .text-gray-700,
+  .glass-card .text-slate-900, .glass-card .text-slate-800, .glass-card .text-slate-700,
+  .glass-card .text-indigo-900, .glass-card .text-blue-900) {
+  color: #e9eff6 !important;
+}
+:where(.bg-white, .bg-gray-50, .bg-gray-100, .bg-slate-50, .bg-slate-100) {
+  background-color: #1a2a3d !important;
+}
+:where(.text-gray-900, .text-gray-800, .text-slate-900, .text-slate-800) {
+  color: #e9eff6 !important;
+}
+
+.academy-game-stationery {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+.academy-game-book {
+  position: absolute;
+  width: 41px;
+  height: 58px;
+  border: 1px solid #e4cb9288;
+  border-inline-start: 5px solid #9b7542;
+  border-radius: 2px 5px 5px 2px;
+  color: #f0dfbb;
+  background: linear-gradient(105deg, #57432d 0 14%, #26394d 15% 89%, #192a3c);
+  box-shadow: 4px 5px 0 #050a12, 0 11px 19px #0008, inset -3px 0 #f2d89224;
+  animation: academy-book-float 7s ease-in-out infinite;
+}
+.academy-game-book::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 8px 4px;
+  display: grid;
+  place-items: center;
+  color: #ead6a9;
+  font-size: 8px;
+  font-weight: 700;
+  writing-mode: vertical-rl;
+}
+.academy-game-book-one { inset-inline-start: 12px; top: 17%; transform: perspective(450px) rotateY(20deg) rotateZ(-8deg); }
+.academy-game-book-two { inset-inline-end: 14px; bottom: 16%; width: 34px; height: 49px; animation-delay: -3.4s; transform: perspective(450px) rotateY(-20deg) rotateZ(8deg); }
+.academy-game-pencil {
+  position: absolute;
+  width: 86px;
+  height: 9px;
+  border: 1px solid #e9d193;
+  border-radius: 3px 8px 8px 3px;
+  background: linear-gradient(180deg, #eed99e, #bc934e 55%, #916c39);
+  box-shadow: 3px 5px 0 #050a12, 0 8px 15px #0007;
+  animation: academy-pencil-float 6.4s ease-in-out infinite;
+}
+.academy-game-pencil::before { content: ""; position: absolute; inset-inline-start: -8px; top: -1px; border-block: 4px solid transparent; border-inline-end: 8px solid #d4c3a5; }
+.academy-game-pencil::after { content: ""; position: absolute; inset-inline-end: 6px; top: 1px; width: 4px; height: 5px; border-radius: 2px; background: #6ea6be; }
+.academy-game-pencil-one { inset-inline-end: 7px; top: 27%; transform: rotate(-34deg); }
+.academy-game-pencil-two { inset-inline-start: 16px; bottom: 27%; width: 68px; background: linear-gradient(180deg, #91d2df, #478ca4 55%, #306477); border-color: #b0e0e9; animation-delay: -2.3s; transform: rotate(24deg); }
+@keyframes academy-book-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+@keyframes academy-pencil-float { 0%, 100% { margin-top: 0; } 50% { margin-top: -9px; } }
+
+@media (max-width: 640px) {
+  .academy-game-book { width: 27px; height: 40px; }
+  .academy-game-book-one { inset-inline-start: 4px; top: 18%; }
+  .academy-game-book-two { inset-inline-end: 5px; bottom: 14%; }
+  .academy-game-pencil { width: 58px; height: 7px; }
+  .academy-game-pencil-one { inset-inline-end: 2px; top: 31%; }
+  .academy-game-pencil-two { inset-inline-start: 4px; bottom: 25%; }
+
+  html, body {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  body {
+    align-items: flex-start !important;
+    padding: 12px !important;
+  }
+
+  :where(.app, .wrap, .container, #app, body > main, .game-container, .game-wrap) {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+
+  :where(header) {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  :where(header > *, .stats, .badges) {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  :where(.stats, .badges) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  :where(.grid, .board, .categories, .cats) {
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  :where(.words, .options) {
+    min-width: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  :where(.cards) {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  :where(.card) {
+    width: min(100%, 145px);
+    min-width: 0;
+    flex: 1 1 110px;
+  }
+
+  :where(.option-btn, .word, .category, .cat, button) {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .academy-game-book, .academy-game-pencil { animation: none !important; }
+  .academy-game-stationery { display: none; }
+}

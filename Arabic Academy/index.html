@@ -1,0 +1,315 @@
+<!--
+THESIS: آکادمی جدایی اتاق مطالعه‌ای زنده برای بازی‌های عربی است؛ نه فهرستی از کارت‌های هم‌شکل.
+OWN-WORLD: چوبِ تیره، فلزِ لاجوردی و ورقِ طلایی، با دفترهای برجسته و ابزار نوشتاریِ شناور، سراسر تجربه را می‌سازند.
+STORY: دانش‌آموز یک بازی را از میز آکادمی برمی‌دارد و همان بازیِ اصلی را بی‌وقفه انجام می‌دهد.
+FIRST VIEWPORT: لوگوی طلایی در آغاز می‌چرخد و می‌نشیند؛ سپس نام آکادمی و میزِ بازی‌های سه‌بعدی با اقدامِ آغازِ روشن آشکار می‌شود.
+FORM: بازطراحیِ اتاق مطالعهٔ سه‌بعدی با CSS؛ هفت بازی اصلی، فارسی و راست‌به‌چپ، با حرکتِ سبک و رعایتِ کاهش حرکت.
+-->
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080f1d">
+  <meta name="description" content="بازی‌های آموزشی و تمرین عربی با منابع استاد غلامحسین جدایی؛ اتاق مطالعهٔ سه‌بعدی آکادمی جدایی.">
+  <title>آکادمی جدایی | بازی‌های آموزشی عربی</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="academy-progress.css">
+  <script src="academy-progress.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="academy-loader" id="academy-loader" role="status" aria-label="آکادمی عربی با آقای جدایی در حال آماده‌شدن است">
+    <div class="loader-orbit" aria-hidden="true"></div>
+    <div class="loader-logo-wrap">
+      <span class="loader-floor" aria-hidden="true"></span>
+      <span class="loader-seal-orbit" aria-hidden="true"></span>
+      <img class="loader-logo" src="assets/academy-logo.png" alt="نشان آکادمی عربی">
+    </div>
+    <p class="loader-name">آکادمی <span>عربی</span></p>
+    <p class="loader-caption">با آقای جدایی</p>
+    <button class="loader-skip" id="loader-skip" type="button">رد کردن نمایش آغازین</button>
+  </div>
+  <div id="page-home">
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="آکادمی جدایی، صفحهٔ اصلی">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/academy-logo.png" alt="">
+        </span>
+        <span><strong>آکادمی</strong><small>جدایی</small></span>
+      </a>
+      <nav class="main-nav" aria-label="پیمایش اصلی">
+        <a href="#atlas">نقشهٔ بازی‌ها</a>
+        <a href="#about">دربارهٔ آکادمی</a>
+      </nav>
+      <a class="header-cta" href="#atlas">پیدا کردن بازی <span aria-hidden="true">↙</span></a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="study-desk" aria-hidden="true">
+          <span class="study-desk-edge"></span>
+        </div>
+        <div class="floating-study-set" aria-hidden="true">
+          <div class="study-book study-book-large"><span>قواعد</span><i></i></div>
+          <div class="study-book study-book-small"><span>عربي</span><i></i></div>
+          <div class="study-pencil"><i></i></div>
+          <div class="study-pencil study-pencil-blue"><i></i></div>
+          <span class="study-orbit study-orbit-one"></span>
+          <span class="study-orbit study-orbit-two"></span>
+        </div>
+        <div class="hero-copy">
+          <p class="hero-stamp"><span aria-hidden="true"></span>هم بازی هم درس با اکادمی عربی اقای جدایی</p>
+          <h1 id="hero-title">عربی را<br><em>بازی کن.</em></h1>
+          <p class="hero-description">از فعل ماضی تا دسته‌بندی واژه‌ها؛ مسیر بعدی‌ات را پیدا کن و همان‌جا بازی را شروع کن.</p>
+          <div class="hero-actions">
+            <a class="button button-sun" href="#atlas">دیدن نقشهٔ بازی‌ها <span aria-hidden="true">←</span></a>
+            <a class="text-link" href="#about">آشنایی با آکادمی <span aria-hidden="true">↙</span></a>
+          </div>
+          <p class="hero-byline">با محتوای آموزشیِ استاد غلامحسین جدایی</p>
+        </div>
+
+        <div class="atlas-illustration" id="atlas-illustration">
+          <div class="atlas-topline"><span>نقشهٔ تمرین</span><span>۴ مسیر <i aria-hidden="true">✳</i></span></div>
+          <svg class="atlas-map" id="atlas-map" viewBox="0 0 760 410" role="group" aria-labelledby="map-title map-description">
+            <title id="map-title">نقشهٔ چهار مسیر بازی در آکادمی جدایی</title>
+            <desc id="map-description">مسیرهای دانستنی‌ها، فعل ماضی، دسته‌بندی اسم‌ها و واژگان عربی؛ برای باز کردن هر بازی روی نام آن بزنید.</desc>
+            <defs>
+              <pattern id="atlas-dots" width="22" height="22" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.2" fill="#fff" opacity=".23"/>
+              </pattern>
+              <filter id="route-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#102b92" flood-opacity=".28"/>
+              </filter>
+            </defs>
+            <path d="M0 0h760v410H0z" fill="url(#atlas-dots)"/>
+            <path class="map-route map-route-sun" d="M75 290c72-4 94-100 186-93s96 99 191 79 105-104 224-89" />
+            <path class="map-route map-route-coral" d="M78 290c85 12 106 88 212 78s94-95 183-92 110 86 206 45" />
+            <path class="map-route map-route-dash" d="M80 290c105 1 111-110 197-104s103 119 197 82 114-80 210-81" />
+
+            <g class="map-compass" transform="translate(675 74)" aria-hidden="true">
+              <circle r="30" fill="#19379f" stroke="#ffffff" stroke-opacity=".44"/>
+              <path d="M0-21 6 0 0 21-6 0 0-21Z" fill="#f1f845"/>
+              <path d="m-21 0 21-6 21 6-21 6-21-6Z" fill="#ff806c"/>
+              <circle r="4" fill="#fff"/>
+            </g>
+
+            <a class="map-stop stop-world" href="#atlas" data-launch-game="world-1" aria-label="شروع بازی پرسش‌وپاسخ عالم، نسخهٔ ۱">
+              <circle class="stop-ring" cx="85" cy="289" r="43"/>
+              <circle class="stop-core" cx="85" cy="289" r="34"/>
+              <text class="stop-symbol" x="85" y="300" text-anchor="middle">؟</text>
+              <text class="stop-label" x="85" y="352" text-anchor="middle">عالم</text>
+              <text class="stop-small" x="85" y="374" text-anchor="middle">پرسش‌وپاسخ</text>
+            </a>
+            <a class="map-stop stop-past" href="#atlas" data-launch-game="past" aria-label="شروع آزمون فعل ماضی پایه هفتم">
+              <circle class="stop-ring" cx="276" cy="197" r="43"/>
+              <circle class="stop-core" cx="276" cy="197" r="34"/>
+              <text class="stop-symbol arabic-symbol" x="276" y="208" text-anchor="middle">كَتَبَ</text>
+              <text class="stop-label" x="276" y="123" text-anchor="middle">فعل ماضی</text>
+              <text class="stop-small" x="276" y="145" text-anchor="middle">۱۴ صیغه · پایهٔ هفتم</text>
+            </a>
+            <a class="map-stop stop-nouns" href="#atlas" data-launch-game="noun-drag" aria-label="شروع بازی دسته‌بندی اسم‌ها، نسخهٔ ۱">
+              <circle class="stop-ring" cx="464" cy="276" r="43"/>
+              <circle class="stop-core" cx="464" cy="276" r="34"/>
+              <text class="stop-symbol" x="464" y="287" text-anchor="middle">اسم</text>
+              <text class="stop-label" x="464" y="341" text-anchor="middle">دسته‌بندی اسم‌ها</text>
+              <text class="stop-small" x="464" y="363" text-anchor="middle">بازیِ واژه‌ها</text>
+            </a>
+            <a class="map-stop stop-vocab" href="#atlas" data-launch-game="vocab" aria-label="شروع بازی دسته‌بندی واژگان عربی">
+              <circle class="stop-ring" cx="670" cy="188" r="43"/>
+              <circle class="stop-core" cx="670" cy="188" r="34"/>
+              <text class="stop-symbol arabic-symbol" x="670" y="199" text-anchor="middle">عَرَبِيّ</text>
+              <text class="stop-label" x="670" y="254" text-anchor="middle">واژگان عربی</text>
+              <text class="stop-small" x="670" y="276" text-anchor="middle">هفتم تا نهم</text>
+            </a>
+            <g class="map-island" transform="translate(374 55)" aria-hidden="true">
+              <path d="M0 0c23-16 59-10 72 10 12 18-1 41-25 45-25 5-57-5-59-26C-14 17-10 7 0 0Z" fill="#fa7966"/>
+              <text x="26" y="28" text-anchor="middle" class="island-letter">ا</text>
+            </g>
+            <text class="map-coordinate" x="36" y="38">۳۵° کلمه · ۰۲° دستور</text>
+          </svg>
+          <div class="atlas-legend"><span><b></b> مسیرهای تمرین</span><span>برای ورود، یک ایستگاه را انتخاب کن <i aria-hidden="true">↗</i></span></div>
+        </div>
+        <div class="hero-edge" aria-hidden="true"><span>ا</span><span>ب</span><span>ج</span><span>د</span></div>
+      </section>
+
+      <section class="route-section" id="atlas" aria-labelledby="atlas-title">
+        <div class="section-intro">
+          <div>
+            <p class="section-label"><span>اطلسِ آکادمی</span><span class="section-spark" aria-hidden="true">✳</span></p>
+            <h2 id="atlas-title">نقشهٔ بازی‌ها</h2>
+            <p class="section-description">یک مقصد انتخاب کن. نسخه‌های مختلف هر تمرین هم همین‌جا در دسترس‌اند.</p>
+          </div>
+          <label class="search-box">
+            <span class="sr-only">جست‌وجو میان بازی‌ها</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+            <input id="game-search" type="search" placeholder="مثلاً فعل یا واژه" autocomplete="off">
+          </label>
+        </div>
+
+        <div class="filter-row" role="group" aria-label="دسته‌بندی بازی‌ها">
+          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">همهٔ مسیرها</button>
+          <button class="filter-button" type="button" data-filter="arabic" aria-pressed="false">عربی</button>
+          <button class="filter-button" type="button" data-filter="words" aria-pressed="false">واژگان</button>
+          <button class="filter-button" type="button" data-filter="quiz" aria-pressed="false">پرسش‌وپاسخ</button>
+        </div>
+
+        <section class="academy-progress-overview" id="academy-progress-overview" aria-label="پیشرفت و قلب‌های آکادمی">
+          <div>
+            <span class="academy-overview-label">امتیاز کل آکادمی</span>
+            <strong class="academy-overview-score" id="academy-progress-score">۰</strong>
+          </div>
+          <div class="academy-overview-hearts">
+            <div>
+              <span class="academy-overview-label">قلب‌های باقی‌مانده</span>
+              <div class="academy-heart-list" id="academy-heart-list" aria-hidden="true"></div>
+            </div>
+            <span class="academy-heart-count" id="academy-heart-count">۵ از ۵</span>
+          </div>
+          <div class="academy-journey-wrap">
+            <span class="academy-overview-label">مسیر بازی‌ها</span>
+            <div class="academy-game-progress" id="academy-game-progress" aria-label="پیشرفت در هفت بازی"></div>
+          </div>
+          <p class="academy-progress-message" id="academy-progress-message" role="status" aria-live="polite"></p>
+        </section>
+
+        <div class="route-list" id="route-list">
+          <article class="route-entry entry-world" data-category="quiz" data-search="عالم پرسش پاسخ دانستنی سوال ۶۰">
+            <div class="entry-route" aria-hidden="true"><span class="entry-index">ا</span><span class="entry-line"></span><span class="entry-pin"></span></div>
+            <div class="entry-content">
+              <div class="entry-heading">
+                <div><p class="entry-type">ایستگاهِ دانستنی‌ها <span>پرسش‌وپاسخ</span></p><h3>عالم</h3></div>
+                <span class="entry-glyph" aria-hidden="true">؟</span>
+              </div>
+              <p class="entry-summary">یک آزمون ۶۰ پرسشی با پاسخ‌گویی مرحله‌به‌مرحله و امتیاز.</p>
+              <div class="entry-actions">
+                <button class="launch-link launch-primary" type="button" data-launch-game="world-1">شروع نسخهٔ ۱ <span aria-hidden="true">←</span></button>
+                <button class="launch-link" type="button" data-launch-game="world-2">نسخهٔ ۲ <span aria-hidden="true">↗</span></button>
+              </div>
+            </div>
+            <div class="entry-note"><span>۶۰</span><small>پرسش</small></div>
+          </article>
+
+          <article class="route-entry entry-past" data-category="arabic" data-search="فعل ماضی عربی پایه هفتم صیغه آزمون">
+            <div class="entry-route" aria-hidden="true"><span class="entry-index">ب</span><span class="entry-line"></span><span class="entry-pin"></span></div>
+            <div class="entry-content">
+              <div class="entry-heading">
+                <div><p class="entry-type">ایستگاهِ دستور <span>عربی · هفتم</span></p><h3>فعل ماضی</h3></div>
+                <span class="entry-glyph arabic-glyph" aria-hidden="true">كَتَبَ</span>
+              </div>
+              <p class="entry-summary">۱۴ صیغه را در آزمون تعاملی ۲۰ سؤالی تمرین کن.</p>
+              <div class="entry-actions"><button class="launch-link launch-primary" type="button" data-launch-game="past">شروع آزمون <span aria-hidden="true">←</span></button></div>
+            </div>
+            <div class="entry-note"><span>۲۰</span><small>سؤال</small></div>
+          </article>
+
+          <article class="route-entry entry-nouns" data-category="words" data-search="اسم واژه دسته بندی کلمه درگ انتخاب جایگذاری">
+            <div class="entry-route" aria-hidden="true"><span class="entry-index">ج</span><span class="entry-line"></span><span class="entry-pin"></span></div>
+            <div class="entry-content">
+              <div class="entry-heading">
+                <div><p class="entry-type">ایستگاهِ واژه‌ها <span>دسته‌بندی اسم</span></p><h3>اسم‌ها را مرتب کن</h3></div>
+                <span class="entry-glyph entry-glyph-block" aria-hidden="true">اسم</span>
+              </div>
+              <p class="entry-summary">واژه‌ها را در گروه درست بگذار؛ سه نسخهٔ بازی با روش‌های تعاملی متفاوت.</p>
+              <div class="entry-actions">
+                <button class="launch-link launch-primary" type="button" data-launch-game="noun-drag">نسخهٔ کشیدنی <span aria-hidden="true">←</span></button>
+                <button class="launch-link" type="button" data-launch-game="noun-tap">نسخهٔ انتخابی <span aria-hidden="true">↗</span></button>
+                <button class="launch-link" type="button" data-launch-game="noun-continue">نسخهٔ مرحله‌ای <span aria-hidden="true">↗</span></button>
+              </div>
+            </div>
+            <div class="entry-note"><span>۳</span><small>نسخه</small></div>
+          </article>
+
+          <article class="route-entry entry-vocab" data-category="arabic words" data-search="عربی لغات واژگان پایه هفتم هشتم نهم مراحل قواعد">
+            <div class="entry-route" aria-hidden="true"><span class="entry-index">د</span><span class="entry-line"></span><span class="entry-pin"></span></div>
+            <div class="entry-content">
+              <div class="entry-heading">
+                <div><p class="entry-type">ایستگاهِ دستور و واژه <span>عربی · هفتم تا نهم</span></p><h3>واژگان عربی</h3></div>
+                <span class="entry-glyph arabic-glyph" aria-hidden="true">كَلِمات</span>
+              </div>
+              <p class="entry-summary">واژه‌ها را به هفت عنوان اصلی قواعد وصل کن؛ بازی در چهار مرحله پیش می‌رود.</p>
+              <div class="entry-actions"><button class="launch-link launch-primary" type="button" data-launch-game="vocab">ورود به بازی واژگان <span aria-hidden="true">←</span></button></div>
+            </div>
+            <div class="entry-note"><span>۴</span><small>مرحله</small></div>
+          </article>
+        </div>
+        <p class="empty-state" id="empty-state" hidden>بازی‌ای با این عبارت پیدا نشد. واژهٔ دیگری را جست‌وجو کن.</p>
+      </section>
+
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div class="about-mark" aria-hidden="true">
+          <svg viewBox="0 0 240 210">
+            <path d="M17 34 118 12l103 23-11 130-91 32-101-32L17 34Z" fill="#f1f845"/>
+            <path d="m42 53 76-17 78 18-8 96-70 24-78-24 2-97Z" fill="#2448c8"/>
+            <path d="m67 70 51-12 53 12-6 61-47 17-53-17 2-61Z" fill="#ff806c"/>
+            <text x="118" y="121" text-anchor="middle" direction="rtl">ع</text>
+            <path d="m16 33 6-25M222 35l8-24M17 168l-8 27M219 166l10 25" stroke="#17307f" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="118" cy="106" r="79" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 8" opacity=".65"/>
+          </svg>
+        </div>
+        <div class="about-copy">
+          <p class="section-label">در مسیر پیشرفت در یادگیری</p>
+          <h2 id="about-title">با بازی کردن عربی یادبگیر؛<br><span>ساده ترین راه برای یادگیری.</span></h2>
+          <p>هم درس بخون هم بازی کن  شعار ما اینه  دنیای یادگیری رو برای شما شیرین تر می کنیم</p>
+          <a class="about-link" href="#atlas">برگرد به نقشه <span aria-hidden="true">↖</span></a>
+        </div>
+        <span class="about-orbit orbit-one" aria-hidden="true"></span>
+        <span class="about-orbit orbit-two" aria-hidden="true"></span>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="footer-brand" href="#">آکادمی عربی با اقای جدایی<span aria-hidden="true">✳</span></a>
+      <p>دارای حق نشر ناشر : امین جدایی</p>
+      <a href="#atlas">نقشهٔ بازی‌ها ↑</a>
+    </footer>
+  </div>
+
+  <main class="game-stage" id="game-stage" hidden aria-labelledby="game-title">
+    <header class="game-toolbar">
+      <button class="back-button" id="back-home" type="button"><span aria-hidden="true">→</span> بازگشت به نقشه</button>
+      <a class="brand game-brand" href="#" aria-label="آکادمی جدایی">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/academy-logo.png" alt="">
+        </span>
+        <span><strong>آکادمی</strong><small>جدایی</small></span>
+      </a>
+      <a class="game-direct-link" id="game-direct-link" href="#" target="_blank" rel="noopener">باز کردن جداگانه <span aria-hidden="true">↗</span></a>
+    </header>
+    <div class="game-heading">
+      <p id="game-category">مسیر بازی</p>
+      <h1 id="game-title">عنوان بازی</h1>
+      <p id="game-description"></p>
+    </div>
+    <div class="game-frame-wrap">
+      <div class="game-props" aria-hidden="true">
+        <span class="game-prop-book game-prop-book-one"><i>عربي</i></span>
+        <span class="game-prop-pencil game-prop-pencil-one"></span>
+        <span class="game-prop-book game-prop-book-two"><i>قواعد</i></span>
+        <span class="game-prop-pencil game-prop-pencil-two"></span>
+      </div>
+      <div class="game-loading" id="game-loading" role="status">
+        <span id="game-loading-message">در حال آماده‌کردن بازی…</span>
+        <button id="game-retry" type="button" hidden>تلاش دوباره</button>
+        <a id="game-fallback-link" href="#" target="_blank" rel="noopener" hidden>بازی را در صفحه‌ای جداگانه باز کن ↗</a>
+      </div>
+      <iframe id="game-frame" title="بازی آموزشی" loading="eager" allow="autoplay"></iframe>
+    </div>
+    <p class="game-help">بازی داخل آکادمی اجرا می‌شود. برای بازگشت به انتخاب بازی‌ها، از دکمهٔ بالای صفحه استفاده کن.</p>
+  </main>
+  <div class="music-dock">
+    <button class="music-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="پخش موسیقی زمینه">
+      <span class="music-note" aria-hidden="true">♪</span>
+      <span id="music-label">پخش موسیقی</span>
+    </button>
+    <audio id="academy-music" preload="none" loop>
+      <source src="assets/academy-background-music.mp3" type="audio/mpeg">
+    </audio>
+    <span class="sr-only" id="music-status" role="status" aria-live="polite"></span>
+  </div>
+</body>
+</html>
+<html>
+  <print>Atist : AminJodaie</print>
+</html>

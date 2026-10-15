@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آکادمی هوشمند یادگیری | مرحله ۱</title>
+<link rel="stylesheet" href="4.css" data-academy-game-style>
+<link rel="stylesheet" href="../academy-progress.css">
+</head>
+<body data-academy-game-id="noun-drag">
+<div class="app">
+<header>
+  <div>
+    <h1>🌟 آکادمی هوشمند یادگیری</h1>
+    <div class="subtitle">بازی دسته‌بندی اسم‌ها — مرحله ۱</div>
+  </div>
+  <div class="badges">
+    <div class="badge">مرحله ۱ از ۳۰</div>
+    <div class="badge">امتیاز: <span id="score">۰</span></div>
+    <div class="badge">⭐ <span id="starCount">۰</span></div>
+  </div>
+</header>
+
+<div class="progress"><span id="bar"></span></div>
+
+<section class="board">
+  <div class="panel">
+    <h2>🧩 لغات را بکشید و جابه‌جا کنید</h2>
+    <div class="words" id="words"></div>
+    <div class="controls">
+      <button id="check">بررسی پاسخ‌ها ✓</button>
+      <button id="reset">شروع دوباره ↻</button>
+    </div>
+    <div id="message"></div>
+  </div>
+
+  <div class="panel">
+    <h2>🎯 هر واژه را در جای درست قرار دهید</h2>
+    <div class="categories" id="categories"></div>
+  </div>
+</section>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="success">
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <h2>آفرین! فوق‌العاده بود! 🎉</h2>
+    <p>همه واژه‌ها را درست دسته‌بندی کردی.</p>
+    <p>امتیاز این مرحله: <b id="finalScore">۰</b></p>
+    <button id="next" style="background:#3f7cff;color:white">مرحله بعد 🚀</button>
+  </div>
+</div>
+<div class="rain" id="rain"></div>
+
+<script src="4.js" defer></script>
+</body>
+</html>
